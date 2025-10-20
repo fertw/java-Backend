@@ -26,9 +26,6 @@ Implementar los primeros **endpoints del proyecto LimpiezaIT**, incorporando con
 - `@RestController` → Define un controlador REST
 - `@RequestMapping` → Establece la ruta base del recurso
 - `@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping` → Vinculan métodos HTTP
-- `@Service` → Marca la capa de lógica de negocio
-- `@Repository` → Maneja los datos (almacenamiento en memoria en esta etapa)
-- `@Autowired` → Permite la inyección de dependencias
 
 #### 💡 Inversión de Control (IoC) e Inyección de Dependencias (DI)
 
