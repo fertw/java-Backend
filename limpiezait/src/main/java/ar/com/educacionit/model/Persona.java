@@ -9,6 +9,12 @@ public class Persona {
 	private Direccion direccion;
 	private String telefono;
 	private String email;
+	
+	
+	public Persona() {
+		super();
+	}
+	
 	public Long getId() {
 		return id;
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.com.educacionit.dto.ProductoDTO;
 import ar.com.educacionit.model.Producto;
 import ar.com.educacionit.service.ProductoService;
 
@@ -25,13 +26,13 @@ public class ProductoController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
-		Producto producto = productoService.findById(id);
+	public ResponseEntity<ProductoDTO> getProductoById(@PathVariable Long id) {
+		ProductoDTO producto = productoService.findById(id);
 		return ResponseEntity.ok(producto);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Producto> createProducto(@RequestBody Producto producto) {
+	public ResponseEntity<ProductoDTO> createProducto(@RequestBody ProductoDTO producto) {
 		productoService.save(producto);
 		return ResponseEntity.ok(producto);
 	}

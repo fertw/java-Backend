@@ -2,6 +2,7 @@ package ar.com.educacionit.service;
 
 import java.util.List;
 
+import ar.com.educacionit.dto.ProductoDTO;
 import ar.com.educacionit.model.Producto;
 import ar.com.educacionit.repository.ProductoRepository;
 
@@ -22,12 +23,25 @@ public class ProductoService {
 		return productoRepository.findAll();
 	}
 	
-	public Producto findById(Long id) {
-		return productoRepository.findById(id);
+	public ProductoDTO findById(Long id) {
+		Producto producto =  productoRepository.findById(id);
+		if (producto == null) {
+			return null;
+		}
+		ProductoDTO productoDTO = new ProductoDTO();
+		productoDTO.setId(producto.getId());
+		productoDTO.setNombre(producto.getNombre());
+		productoDTO.setPrecio(producto.getPrecio());
+		return productoDTO;
 	}
 	
-	public void save(Producto producto) {
-		productoRepository.save(producto);
+	public void save(ProductoDTO producto) {
+		Producto prod = new Producto();
+		prod.setId(producto.getId());
+		prod.setNombre(producto.getNombre());
+		prod.setPrecio(producto.getPrecio());
+		
+		productoRepository.save(prod);
 	}
 	
 	public void deleteById(Long id) {	
