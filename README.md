@@ -35,12 +35,9 @@ mediante **Basic Auth**, roles y configuración de seguridad básica.
 
 #### ⚙️ Métodos comunes de autenticación
 
-| Método         | Descripción                                 | Ventajas                      | Desventajas                                    |
-| -------------- | ------------------------------------------- | ----------------------------- | ---------------------------------------------- |
-| **Basic Auth** | Usuario y contraseña codificados en Base64. | Simple, nativo en HTTP.       | No cifra datos, requiere HTTPS.                |
-| **API Key**    | Clave única por cliente o aplicación.       | Fácil de usar.                | Sin cifrado, poco seguro para datos sensibles. |
-| **Token JWT**  | Token firmado con datos del usuario.        | Stateless, seguro, escalable. | Requiere lógica de generación y validación.    |
-| **OAuth 2.0**  | Acceso delegado (Google, GitHub, etc.).     | Muy seguro, estándar actual.  | Complejo de implementar.                       |
+| Método         | Descripción                                 | Ventajas                | Desventajas                     |
+| -------------- | ------------------------------------------- | ----------------------- | ------------------------------- |
+| **Basic Auth** | Usuario y contraseña codificados en Base64. | Simple, nativo en HTTP. | No cifra datos, requiere HTTPS. |
 
 💡 En esta clase usamos **Basic Auth** para comprender la base de la autenticación en Spring Boot.
 
