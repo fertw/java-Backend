@@ -6,12 +6,12 @@
 
 ### 🎯 Objetivo de la clase
 
-Entender cómo funciona **JWT** para proteger APIs REST de manera **stateless**, y agregarlo al proyecto **LimpiezaIT**:
+Comprender el funcionamiento del **JWT (JSON Web Token)** como mecanismo de autenticación **stateless** en una API REST con **Spring Boot**, e implementarlo en el proyecto **LimpiezaIT**:
 
 - Emitir un token al autenticarse (`/auth/login`)
-- Validar el token en cada request (filtro JWT)
-- Restringir endpoints por **roles**
-- Usar **`@PreAuthorize`** para reglas de autorización por método
+- Validar el token en cada request mediante un **filtro JWT**
+- Restringir endpoints según **roles**
+- Aplicar **`@PreAuthorize`** para control de acceso a nivel de método
 
 ---
 
@@ -19,13 +19,13 @@ Entender cómo funciona **JWT** para proteger APIs REST de manera **stateless**,
 
 ### ¿Qué es JWT?
 
-**JWT** es un **token firmado** (no cifrado) que el servidor emite cuando el usuario se autentica correctamente.
+Un **JSON Web Token (JWT)** es un **token firmado** (no cifrado) que el servidor genera cuando un usuario se autentica correctamente.
 
-- El cliente lo envía en cada request: `Authorization: Bearer <token>`
-- El servidor **valida la firma** del token y **no guarda sesión** (stateless).
+- El cliente lo incluye en cada request HTTP mediante el header:
+- El servidor **verifica la firma** del token y **no mantiene sesiones** en memoria (arquitectura _stateless_).
 
-**Estructura:** `header.payload.signature`
+#### Estructura de un JWT
 
-- **header:** algoritmo y tipo (`alg`, `typ`)
-- **payload:** claims (sub, roles, exp, etc.)
-- **signature:** firma HS256/RS256 con la secret/clave privada
+- **Header:** indica algoritmo y tipo (`alg`, `typ`)
+- **Payload:** contiene los _claims_ (sub, roles, exp, etc.)
+- **Signature:** es la firma creada con el algoritmo (por ejemplo HS256) y la _secret key_
