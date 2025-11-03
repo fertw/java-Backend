@@ -1,31 +1,27 @@
-# Clase 5 – Java Backend
+# 🧱 Clase 6 — Documentación de APIs con Swagger / OpenAPI
 
-## Etapa 5: Autenticación con JWT (JSON Web Token) en Spring Boot
+## 🎯 Objetivo de la clase
 
----
-
-### 🎯 Objetivo de la clase
-
-Comprender el funcionamiento del **JWT (JSON Web Token)** como mecanismo de autenticación **stateless** en una API REST con **Spring Boot**, e implementarlo en el proyecto **LimpiezaIT**:
-
-- Emitir un token al autenticarse (`/auth/login`)
-- Validar el token en cada request mediante un **filtro JWT**
-- Restringir endpoints según **roles**
-- Aplicar **`@PreAuthorize`** para control de acceso a nivel de método
+Incorporar **Swagger / OpenAPI** a nuestro proyecto **Spring Boot**, documentar los endpoints existentes y comprender cómo encaja dentro de la **arquitectura en capas (N-Tier)**.
 
 ---
 
-## 🧠 Teoría y flujo completo
+## 🧩 1. Arquitectura trabajada
 
-### ¿Qué es JWT?
+Usamos una **arquitectura monolítica en capas** con separación de responsabilidades:
 
-Un **JSON Web Token (JWT)** es un **token firmado** (no cifrado) que el servidor genera cuando un usuario se autentica correctamente.
+Swagger documenta los **endpoints de la capa Controller**.
 
-- El cliente lo incluye en cada request HTTP mediante el header:
-- El servidor **verifica la firma** del token y **no mantiene sesiones** en memoria (arquitectura _stateless_).
+---
 
-#### Estructura de un JWT
+## ⚙️ 2. Agregar Swagger / OpenAPI al proyecto
 
-- **Header:** indica algoritmo y tipo (`alg`, `typ`)
-- **Payload:** contiene los _claims_ (sub, roles, exp, etc.)
-- **Signature:** es la firma creada con el algoritmo (por ejemplo HS256) y la _secret key_
+### 📄 Dependencia Maven
+
+```xml
+<dependency>
+  <groupId>org.springdoc</groupId>
+  <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+  <version>2.6.0</version>
+</dependency>
+```

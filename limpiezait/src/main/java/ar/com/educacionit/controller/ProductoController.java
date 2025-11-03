@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.com.educacionit.dto.ProductoDTO;
 import ar.com.educacionit.model.Producto;
 import ar.com.educacionit.service.ProductoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/productos")
@@ -23,11 +26,15 @@ public class ProductoController {
 
 	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping
+	@Tag(name="Productos")
 	public List<Producto> getAllProductos() {
 		return productoService.findAll();
 	}
 
 	@GetMapping("/{id}")
+	@Tag(name="Productos")
+	@Operation(summary = "Obtener producto por ID", description = "Devuelve un producto específico según su ID")
+	@Parameter(name = "id", description = "ID del producto a obtener", required = true)
 	public ResponseEntity<ProductoDTO> getProductoById(@PathVariable Long id) {
 		ProductoDTO producto = productoService.findById(id);
 		return ResponseEntity.ok(producto);
